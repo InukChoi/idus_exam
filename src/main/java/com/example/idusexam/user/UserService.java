@@ -26,6 +26,11 @@ public class UserService implements UserDetailsService {
         return UserDto.UserResponse.fromEntity(user);
     }
 
+    public UserDto.UserOrdersResponse getUserOrders(Long idx) {
+        User user = userRepository.findById(idx).orElseThrow();
+        return UserDto.UserOrdersResponse.fromEntity(user);
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> result = userRepository.findByEmail(username);

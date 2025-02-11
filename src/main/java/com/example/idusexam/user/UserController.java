@@ -21,4 +21,9 @@ public class UserController {
     public ResponseEntity<UserDto.UserResponse> read(@PathVariable Long idx) {
         return ResponseEntity.ok(userService.getUserByIdx(idx));
     }
+
+    @GetMapping("/read/{idx}/orders")
+    public ResponseEntity<UserDto.UserOrdersResponse> readOrders(@PathVariable Long idx) {
+        return ResponseEntity.ok(userService.getUserOrders(idx));
+    }
 }
