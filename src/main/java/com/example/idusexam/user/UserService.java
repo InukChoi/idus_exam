@@ -21,6 +21,11 @@ public class UserService implements UserDetailsService {
         userRepository.save(dto.toEntity(passwordEncoder.encode(dto.getPassword())));
     }
 
+    public UserDto.UserResponse getUserByIdx(Long idx) {
+        User user = userRepository.findById(idx).orElseThrow();
+        return UserDto.UserResponse.fromEntity(user);
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> result = userRepository.findByEmail(username);
