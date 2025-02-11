@@ -2,8 +2,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: ${ MAIL_ADDR }
-    password: ${ MAIL_PASSWORD }
+    username: ${MAIL_ADDR}
+    password: ${MAIL_PASSWORD}
     properties:
       mail:
         smtp:
@@ -14,15 +14,15 @@ spring:
           timeout: 5000
   datasource:
     master:
-      jdbc-url: ${ MASTER_DB_URL }
+      jdbc-url: ${MASTER_DB_URL}
       driver-class-name: org.mariadb.jdbc.Driver
-      username: ${ DB_USER }
-      password: ${ DB_PASSWORD }
+      username: ${DB_USER}
+      password: ${DB_PASSWORD}
     slave:
-      jdbc-url: ${ SLAVE_DB_URL }
+      jdbc-url: ${SLAVE_DB_URL}
       driver-class-name: org.mariadb.jdbc.Driver
-      username: ${ DB_USER }
-      password: ${ DB_PASSWORD }
+      username: ${DB_USER}
+      password: ${DB_PASSWORD}
   jpa:
     database-platform: org.hibernate.dialect.MariaDBDialect
     hibernate:

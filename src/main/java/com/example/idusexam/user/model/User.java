@@ -1,6 +1,6 @@
 package com.example.idusexam.user.model;
 
-import com.example.idusexam.order.model.Order;
+import com.example.idusexam.order.model.Orders;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,7 +31,7 @@ public class User implements UserDetails {
     private String gender;
 
     @OneToMany(mappedBy = "user")
-    private List<Order> orderList;
+    private List<Orders> ordersList;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
