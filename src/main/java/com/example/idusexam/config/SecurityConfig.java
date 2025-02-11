@@ -43,7 +43,7 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests(
                 (auth) -> auth
-                        .requestMatchers("/user/signup", "/login").permitAll()
+                        .requestMatchers("/user/register", "/login").permitAll()
 //                        .requestMatchers("/feed/register").hasAnyRole("USER", "ADMIN")
                         .anyRequest().authenticated()
         );
