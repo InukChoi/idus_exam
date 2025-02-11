@@ -15,7 +15,7 @@ public class UserController {
 
     @PostMapping("/register")
     public String register(@RequestBody UserDto.SignupRequest dto) {
-        userService.registerUser(dto.toEntity());
+        userService.registerUser(dto);
         return "success";
     }
 }

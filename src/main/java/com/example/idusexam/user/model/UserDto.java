@@ -17,12 +17,12 @@ public class UserDto {
         private String password;
         private String gender;
         private Long phone;
-        public User toEntity() {
+        public User toEntity(String encryptedPassword) {
             return User.builder()
                     .username(username)
                     .nickname(nickname)
                     .email(email)
-                    .password(password)
+                    .password(encryptedPassword)
                     .gender(gender)
                     .phone(phone)
                     .build();
