@@ -29,4 +29,24 @@ public class UserDto {
         }
     }
 
+    @Getter @Builder @AllArgsConstructor @NoArgsConstructor
+    public static class UserResponse {
+        private Long idx;
+        private String username;
+        private String nickname;
+        private String email;
+        private String gender;
+        private Long phone;
+        public static UserResponse fromEntity(User user) {
+            return UserResponse.builder()
+                    .idx(user.getIdx())
+                    .username(user.getUsername())
+                    .nickname(user.getNickname())
+                    .email(user.getEmail())
+                    .gender(user.getGender())
+                    .phone(user.getPhone())
+                    .build();
+        }
+    }
+
 }
