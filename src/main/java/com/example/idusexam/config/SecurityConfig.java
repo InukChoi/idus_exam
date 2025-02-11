@@ -2,6 +2,8 @@ package com.example.idusexam.config;
 
 import com.example.idusexam.config.filter.JwtFilter;
 import com.example.idusexam.config.filter.LoginFilter;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,17 +42,25 @@ public class SecurityConfig {
         http.httpBasic(AbstractHttpConfigurer::disable);
 
         http.formLogin(AbstractHttpConfigurer::disable);
+        http.logout(logout -> logout.logoutUrl("/logout")
+                .logoutSuccessHandler((request, response, authentication) -> {
+                    response.setStatus(HttpServletResponse.SC_OK);
+                })
+                .deleteCookies("JSESSIONID", "ATOKEN"));
 
         http.authorizeHttpRequests(
                 (auth) -> auth
                         .requestMatchers("/user/register", "/login",
-                                "/user/read/*", "/user/read/*/orders").permitAll()
+                                "/user/read/*", "/user/read/*/orders", "/logout",
+                                "/error").permitAll()
 //                        .requestMatchers("/feed/register").hasAnyRole("USER", "ADMIN")
                         .anyRequest().authenticated()
         );
         http.sessionManagement(AbstractHttpConfigurer::disable);
         http.addFilterAt(new LoginFilter(configuration.getAuthenticationManager()), UsernamePasswordAuthenticationFilter.class);
         http.addFilterBefore(new JwtFilter(), UsernamePasswordAuthenticationFilter.class);
+
+
 
         return http.build();
     }
