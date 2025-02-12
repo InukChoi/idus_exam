@@ -1,10 +1,12 @@
 package com.example.idusexam.user;
 
 import com.example.idusexam.user.model.UserDto;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@Tag(name = "회원 기능")
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/user")
