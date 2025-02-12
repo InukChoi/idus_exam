@@ -23,11 +23,17 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
+    @Column(nullable = false)
     private String username;
+    @Column(nullable = false)
     private String nickname;
+    @Column(nullable = false)
     private String password;
+    @Column(nullable = false)
     private String email;
+    @Column(nullable = false)
     private Long phone;
+    @Column(nullable = false)
     private String gender;
 
     @OneToMany(mappedBy = "user")
