@@ -19,7 +19,9 @@ public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
+    @Column(nullable = false, unique = true)
     private String orderNo;
+    @Column(nullable = false)
     private String productName;
     @CreationTimestamp
     private LocalDateTime orderDate;
